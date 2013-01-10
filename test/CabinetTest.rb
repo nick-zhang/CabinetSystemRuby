@@ -18,4 +18,11 @@ class CabinetTest < MiniTest::Unit::TestCase
     ticket = cabinet.store(Bag.new())
     refute_nil ticket
   end
+  
+  def testShouldNotStoreBagWhenThereIsNoBoxAvailable
+    cabinet = Cabinet.new(0)
+    ticket = cabinet.store(Bag.new())
+    assert_nil ticket
+  end
+  
 end

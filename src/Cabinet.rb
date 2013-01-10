@@ -5,6 +5,7 @@ class Cabinet
   def initialize(capacity)
     @capacity = capacity
     @usedBoxes = 0
+    @storedBags = {}
   end
   
   public
@@ -13,7 +14,11 @@ class Cabinet
   end
   
   def store bag
-    Ticket.new()
+    return nil if !hasEmptyBox
+    
+    ticket =  Ticket.new()
+    @storedBags[ticket] = bag
+    ticket
   end
   
 end
