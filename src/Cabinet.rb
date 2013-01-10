@@ -1,3 +1,5 @@
+require_relative './Ticket'
+
 class Cabinet 
   
   def initialize(capacity)
@@ -8,6 +10,10 @@ class Cabinet
   public
   def hasEmptyBox
     @usedBoxes < @capacity
+  end
+  
+  def store bag
+    Ticket.new()
   end
   
 end
