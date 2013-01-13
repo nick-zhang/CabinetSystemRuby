@@ -21,4 +21,8 @@ class Cabinet
     ticket
   end
   
+  def pick ticket
+    @storedBags[ticket]
+  end
+  
 end

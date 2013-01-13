@@ -25,4 +25,13 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_nil ticket
   end
   
+  def testShouldPickBagCorrectlyWhenStoredSuccessfully
+    cabinet = Cabinet.new(1)
+    bag = Bag.new()
+    ticket = cabinet.store(bag)
+    refute_nil ticket
+    pickedBag = cabinet.pick(ticket)
+    assert_equal bag, pickedBag 
+  end
+  
 end
