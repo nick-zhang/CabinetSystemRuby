@@ -1,20 +1,20 @@
-require_relative './Ticket'
+require_relative 'Ticket'
+require_relative 'InvalidTicketException'
 
 class Cabinet 
   
   def initialize(capacity)
     @capacity = capacity
-    @usedBoxes = 0
     @storedBags = {}
   end
   
   public
   def hasEmptyBox
-    @usedBoxes < @capacity
+    @storedBags.length < @capacity
   end
   
   def store bag
-    return nil if !hasEmptyBox
+    return nil unless hasEmptyBox
     
     ticket =  Ticket.new()
     @storedBags[ticket] = bag
@@ -22,7 +22,9 @@ class Cabinet
   end
   
   def pick ticket
-    @storedBags[ticket]
+    raise InvalidTicketException.new("The ticket is invalid." ) unless @storedBags.has_key?(ticket)
+    
+    @storedBags.delete(ticket)
   end
   
 end

@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require '../src/Cabinet'
 require '../src/Bag'
+require '../src/InvalidTicketException'
+require '../src/Ticket'
 
 class CabinetTest < MiniTest::Unit::TestCase
   def testShouldHaveEmptyBoxWhenHasCapacity
@@ -34,4 +36,13 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_equal bag, pickedBag 
   end
   
+  def testShouldThrowExceptionGivenUsedTicket
+    assert_raises(InvalidTicketException){
+      cabinet = Cabinet.new(1)
+      bag = Bag.new()
+      ticket = cabinet.store(bag)
+      pickedBag = cabinet.pick(ticket)
+      cabinet.pick(Ticket.new())  
+    }
+  end
 end
