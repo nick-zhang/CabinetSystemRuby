@@ -45,4 +45,12 @@ class CabinetTest < MiniTest::Unit::TestCase
       cabinet.pick(Ticket.new())  
     }
   end
+  
+  def testShouldThrowExceptionGivenNotExistedTicket
+    assert_raises(InvalidTicketException){
+      cabinet = Cabinet.new(1)
+      cabinet.pick(Ticket.new())  
+    }
+  end
+  
 end
