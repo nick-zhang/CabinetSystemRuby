@@ -9,4 +9,12 @@ class RobotTest < MiniTest::Unit::TestCase
      robot = Robot.new(cabinets)
      assert robot.hasEmptyBox
    end
+   
+   def testShouldNotHaveEmptyBoxWhenNoCapacity
+       cabinet = Cabinet.new(0)
+       cabinets = [cabinet]
+       robot = Robot.new(cabinets)
+       assert !robot.hasEmptyBox
+   end
+    
 end

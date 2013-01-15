@@ -9,6 +9,8 @@ class Robot
     @cabinets.each do |cabinet|
       return true if cabinet.hasEmptyBox
     end
+    
+    false
   end
   
 end
