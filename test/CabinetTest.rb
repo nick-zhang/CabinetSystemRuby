@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require '../src/Cabinet'
 require '../src/Bag'
-require '../src/InvalidTicketException'
+require '../src/CabinetException'
 require '../src/Ticket'
 
 class CabinetTest < MiniTest::Unit::TestCase
@@ -21,10 +21,12 @@ class CabinetTest < MiniTest::Unit::TestCase
     refute_nil ticket
   end
   
-  def testShouldNotStoreBagWhenThereIsNoBoxAvailable
-    cabinet = Cabinet.new(0)
-    ticket = cabinet.store(Bag.new())
-    assert_nil ticket
+  def testShouldThrowExceptionWhenThereIsNoBoxAvailableToStore
+    assert_raises(CabinetException){
+      cabinet = Cabinet.new(0)
+      ticket = cabinet.store(Bag.new())
+      assert_nil ticket
+    }
   end
   
   def testShouldPickBagCorrectlyWhenStoredSuccessfully
@@ -36,21 +38,19 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_equal bag, pickedBag 
   end
   
-  def testShouldThrowExceptionGivenUsedTicket
-    assert_raises(InvalidTicketException){
-      cabinet = Cabinet.new(1)
-      bag = Bag.new()
-      ticket = cabinet.store(bag)
-      pickedBag = cabinet.pick(ticket)
-      cabinet.pick(Ticket.new())  
-    }
+  def testShouldReturnNilGivenUsedTicket
+    cabinet = Cabinet.new(1)
+    bag = Bag.new()
+    ticket = cabinet.store(bag)
+    pickedBag = cabinet.pick(ticket)
+    bag = cabinet.pick(Ticket.new())  
+    assert_nil bag 
   end
   
   def testShouldThrowExceptionGivenNotExistedTicket
-    assert_raises(InvalidTicketException){
-      cabinet = Cabinet.new(1)
-      cabinet.pick(Ticket.new())  
-    }
+    cabinet = Cabinet.new(1)
+    bag = cabinet.pick(Ticket.new())  
+    assert_nil bag     
   end
   
 end

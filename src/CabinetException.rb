@@ -1,4 +1,4 @@
-class InvalidTicketException < RuntimeError
+class CabinetException < RuntimeError
   attr :message 
   
   def initialize(message)

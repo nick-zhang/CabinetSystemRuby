@@ -21,6 +21,16 @@ class Robot
     return cabinet.store(bag)
   end
   
+  def pick ticket
+    @cabinets.each do |cabinet|
+      bag = cabinet.pick(ticket)
+      return bag if !bag.nil?
+    end
+    
+    nil
+    
+  end
+  
   private 
   def findCabinetWithEmptyBox
     @cabinets.each do |cabinet|

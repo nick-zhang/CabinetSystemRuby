@@ -1,5 +1,5 @@
 require_relative 'Ticket'
-require_relative 'InvalidTicketException'
+require_relative 'CabinetException'
 
 class Cabinet 
   
@@ -14,7 +14,7 @@ class Cabinet
   end
   
   def store bag
-    return nil unless hasEmptyBox
+    raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox
     
     ticket =  Ticket.new()
     @storedBags[ticket] = bag
@@ -22,7 +22,7 @@ class Cabinet
   end
   
   def pick ticket
-    raise InvalidTicketException.new("The ticket is invalid." ) unless @storedBags.has_key?(ticket)
+    return nil unless @storedBags.has_key?(ticket)
     
     @storedBags.delete(ticket)
   end
