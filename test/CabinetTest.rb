@@ -25,7 +25,6 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_raises(CabinetException){
       cabinet = Cabinet.new(0)
       ticket = cabinet.store(Bag.new())
-      assert_nil ticket
     }
   end
   
