@@ -25,5 +25,13 @@ class RobotTest < MiniTest::Unit::TestCase
     ticket = robot.store(Bag.new())
     refute_nil ticket
   end
+  
+  def testShouldNotStoreBagWhenThereIsNoBoxAvailable
+    cabinet = Cabinet.new(0)
+    cabinets = [cabinet]
+    robot = Robot.new(cabinets)
+    ticket = robot.store(Bag.new())
+    assert_nil ticket
+  end
     
 end
