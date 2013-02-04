@@ -28,6 +28,16 @@ class SmartRobotTest < MiniTest::Unit::TestCase
     refute_nil ticket
   end
     
+  def testShouldStoreBagInCabinetWithMostAvailableBoxes
+    cabinet1 = Cabinet.new(1)
+    cabinet2 = Cabinet.new(2)
+    robot = Robot.new(cabinet1, cabinet2, @cabinetSelector)
+    ticket = robot.store(Bag.new())
+    refute_nil ticket
+    assert_equal 1, cabinet1.emptyBoxNum?
+    assert_equal 1, cabinet2.emptyBoxNum?
+  end  
+    
   def testShouldNotStoreBagWhenThereIsNoBoxAvailable
      cabinet = Cabinet.new(0)
      robot = Robot.new(cabinet, @cabinetSelector)
