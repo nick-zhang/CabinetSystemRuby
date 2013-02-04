@@ -6,9 +6,9 @@ class Robot
   end
   
   public
-  def hasEmptyBox
+  def hasEmptyBox?
     @cabinets.each do |cabinet|
-      return true if cabinet.hasEmptyBox
+      return true if cabinet.hasEmptyBox?
     end
     
     false

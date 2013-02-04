@@ -9,16 +9,16 @@ class Cabinet
   end
   
   public
-  def hasEmptyBox
+  def hasEmptyBox?
     @storedBags.length < @capacity
   end
   
-  def emptyBoxNum
+  def emptyBoxNum?
     @capacity - @storedBags.length 
   end
   
   def store bag
-    raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox
+    raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox?
     
     ticket =  Ticket.new()
     @storedBags[ticket] = bag

@@ -7,17 +7,17 @@ require '../src/Ticket'
 class CabinetTest < MiniTest::Unit::TestCase
   def testShouldHaveEmptyBoxWhenHasCapacity
     cabinet = Cabinet.new(1)
-    assert cabinet.hasEmptyBox
+    assert cabinet.hasEmptyBox?
   end
   
   def testShouldNotHaveEmptyBoxWhenNoCapacity
     cabinet = Cabinet.new(0)
-    assert !cabinet.hasEmptyBox
+    assert !cabinet.hasEmptyBox?
   end
   
   def testShouldReturnEmptyBoxNumber
     cabinet = Cabinet.new(1)
-    assert_equal 1, cabinet.emptyBoxNum
+    assert_equal 1, cabinet.emptyBoxNum?
   end
   
   def testShouldStoreBagWhenThereIsBoxAvailable

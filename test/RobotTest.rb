@@ -12,13 +12,13 @@ class RobotTest < MiniTest::Unit::TestCase
   def testShouldHaveEmptyBoxWhenHasCapacity
     cabinet = Cabinet.new(1)
     robot = Robot.new(cabinet, @cabinetSelector)
-    assert robot.hasEmptyBox
+    assert robot.hasEmptyBox?
   end
 
   def testShouldNotHaveEmptyBoxWhenNoCapacity
     cabinet = Cabinet.new(0)
     robot = Robot.new(cabinet, @cabinetSelector)
-    assert !robot.hasEmptyBox
+    assert !robot.hasEmptyBox?
   end
     
   def testShouldStoreBagWhenThereIsBoxAvailable
