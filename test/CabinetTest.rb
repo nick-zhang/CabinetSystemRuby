@@ -15,6 +15,11 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert !cabinet.hasEmptyBox
   end
   
+  def testShouldReturnEmptyBoxNumber
+    cabinet = Cabinet.new(1)
+    assert_equal 1, cabinet.emptyBoxNum
+  end
+  
   def testShouldStoreBagWhenThereIsBoxAvailable
     cabinet = Cabinet.new(1)
     ticket = cabinet.store(Bag.new())

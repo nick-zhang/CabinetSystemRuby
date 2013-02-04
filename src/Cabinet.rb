@@ -13,6 +13,10 @@ class Cabinet
     @storedBags.length < @capacity
   end
   
+  def emptyBoxNum
+    @capacity - @storedBags.length 
+  end
+  
   def store bag
     raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox
     
