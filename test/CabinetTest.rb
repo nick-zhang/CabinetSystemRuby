@@ -1,8 +1,8 @@
 require 'minitest/autorun'
-require '../src/Cabinet'
-require '../src/Bag'
-require '../src/CabinetException'
-require '../src/Ticket'
+require_relative '../src/Cabinet'
+require_relative '../src/Bag'
+require_relative '../src/CabinetException'
+require_relative '../src/Ticket'
 
 class CabinetTest < MiniTest::Unit::TestCase
   def testShouldHaveEmptyBoxWhenHasCapacity

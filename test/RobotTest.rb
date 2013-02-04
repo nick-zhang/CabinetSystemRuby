@@ -1,8 +1,8 @@
 require 'minitest/autorun'
-require '../src/Robot'
-require '../src/Cabinet'
-require '../src/Bag'
-require '../src/SequentialSelector'
+require_relative '../src/Robot'
+require_relative '../src/Cabinet'
+require_relative '../src/Bag'
+require_relative '../src/SequentialSelector'
 
 class RobotTest < MiniTest::Unit::TestCase
   def setup
