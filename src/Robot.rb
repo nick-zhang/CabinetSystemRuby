@@ -1,6 +1,6 @@
 class Robot
   
-  def initialize(*cabinets)
+  def initialize(*cabinets, cabinetSelector)
     @cabinets = cabinets
   end
   
