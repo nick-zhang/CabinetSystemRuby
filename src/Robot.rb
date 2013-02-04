@@ -2,6 +2,7 @@ class Robot
   
   def initialize(*cabinets, cabinetSelector)
     @cabinets = cabinets
+    @selector = cabinetSelector
   end
   
   public
@@ -14,7 +15,7 @@ class Robot
   end
   
   def store bag
-    cabinet = findCabinetWithEmptyBox
+    cabinet = @selector.selectCabinet(@cabinets)
     
     return nil if cabinet.nil?
     
@@ -30,14 +31,5 @@ class Robot
     nil
     
   end
-  
-  private 
-  def findCabinetWithEmptyBox
-    @cabinets.each do |cabinet|
-      return cabinet if cabinet.hasEmptyBox
-    end
-    nil
-  end
-  
   
 end
