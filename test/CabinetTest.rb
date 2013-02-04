@@ -26,6 +26,14 @@ class CabinetTest < MiniTest::Unit::TestCase
     refute_nil ticket
   end
   
+  def testShouldReturnBoxVacancyRate
+    cabinet = Cabinet.new(1)
+    assert_equal 1, cabinet.vacancyRate?
+    
+    cabinet.store(Bag.new())
+    assert_equal 0, cabinet.vacancyRate?
+  end
+  
   def testShouldThrowExceptionWhenThereIsNoBoxAvailableToStore
     assert_raises(CabinetException){
       cabinet = Cabinet.new(0)
