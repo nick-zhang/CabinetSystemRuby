@@ -14,6 +14,14 @@ class Robot
     false
   end
   
+  def emptyBoxReport?
+    report = "Robot#{self.object_id}\n"
+    @cabinets.each do |cabinet|
+      report = report + "  #{cabinet.emptyBoxReport?}\n"
+    end
+    report
+  end
+  
   def store bag
     cabinet = @selector.selectCabinet(@cabinets)
     

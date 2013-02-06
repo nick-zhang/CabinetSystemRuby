@@ -60,5 +60,16 @@ class RobotTest < MiniTest::Unit::TestCase
     bag = robot.pick(Ticket.new())
     assert_nil bag     
   end
+  
+  def testShouldReturnFormattedEmptyBoxReportStringGivenMultipleCaibnet
+    cabinet1 = Cabinet.new(1)
+    cabinet2 = Cabinet.new(2)
+    robot = Robot.new(cabinet1, cabinet2, @cabinetSelector)
+    emptyBoxReport = robot.emptyBoxReport?
+    assert_equal "Robot#{robot.object_id}\n"+
+                  "  Cabinet#{cabinet1.object_id}:1\n" +
+                  "  Cabinet#{cabinet2.object_id}:2\n", emptyBoxReport
+  end
+  
     
 end
