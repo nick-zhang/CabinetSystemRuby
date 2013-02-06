@@ -16,8 +16,9 @@ class Robot
   
   def emptyBoxReport?
     report = "Robot#{self.object_id}\n"
+    
     @cabinets.each do |cabinet|
-      report << "  #{cabinet.emptyBoxReport?}\n"
+      report << "  #{cabinet.emptyBoxReport?}\n" unless cabinet.eql? nil
     end
     report
   end

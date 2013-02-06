@@ -61,7 +61,7 @@ class RobotTest < MiniTest::Unit::TestCase
     assert_nil bag     
   end
   
-  def testShouldReturnFormattedEmptyBoxReportStringGivenMultipleCaibnet
+  def testShouldReturnFormattedEmptyBoxReportStringGivenMultipleCaibnets
     cabinet1 = Cabinet.new(1)
     cabinet2 = Cabinet.new(2)
     robot = Robot.new(cabinet1, cabinet2, @cabinetSelector)
@@ -71,5 +71,10 @@ class RobotTest < MiniTest::Unit::TestCase
                   "  Cabinet#{cabinet2.object_id}:2\n", emptyBoxReport
   end
   
+  def testShouldReturnRobotFormattedEmptyBoxReportGivenNoCaibnet 
+    robot = Robot.new(nil, @cabinetSelector)
+    emptyBoxReport = robot.emptyBoxReport?
+    assert_equal "Robot#{robot.object_id}\n", emptyBoxReport
+  end
     
 end
