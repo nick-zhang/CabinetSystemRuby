@@ -21,6 +21,10 @@ class Cabinet
     emptyBoxNum? / @capacity
   end
   
+  def emptyBoxReport?
+    "Cabinet#{self.object_id}:#{emptyBoxNum?}"
+  end
+  
   def store bag
     raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox?
     

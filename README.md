@@ -1,4 +1,4 @@
 CabinetSystemRuby
 =================
 
-OO bootcamp problem in ruby.
+OO bootcamp problem Cabinet System in ruby.
