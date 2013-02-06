@@ -7,4 +7,8 @@ class SequentialSelector < CabinetSelector
     end
     nil
   end
+  
+  def name? 
+   ""
+  end
 end

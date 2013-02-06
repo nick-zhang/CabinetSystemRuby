@@ -6,4 +6,7 @@ class MostAvailableBoxSelector < CabinetSelector
     return cabinets[0].hasEmptyBox? ? cabinets[0] : nil
   end
   
+  def name? 
+    "Smart"
+  end
 end
