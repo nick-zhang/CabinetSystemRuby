@@ -17,7 +17,7 @@ class Robot
   def emptyBoxReport?
     report = "Robot#{self.object_id}\n"
     @cabinets.each do |cabinet|
-      report = report + "  #{cabinet.emptyBoxReport?}\n"
+      report << "  #{cabinet.emptyBoxReport?}\n"
     end
     report
   end
