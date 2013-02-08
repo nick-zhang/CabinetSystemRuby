@@ -53,5 +53,15 @@ class ManagerTest < MiniTest::Unit::TestCase
     pickedBag = manager.pick(ticket)
     assert_equal bag, pickedBag 
   end
-   
+      
+  def testShouldReturnNilGivenUsedTicket
+    manager = Manager.new(@cabinet, @robot)
+
+    bag = Bag.new()
+    ticket = manager.store(bag)
+    pickedBag = manager.pick(ticket)
+    bag = manager.pick(Ticket.new())  
+    assert_nil bag
+  end
+       
 end
