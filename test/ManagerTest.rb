@@ -35,5 +35,14 @@ class ManagerTest < MiniTest::Unit::TestCase
     ticket = manager.store(Bag.new())
     refute_nil ticket
   end
-      
+    
+  def testShouldNotStoreBagWhenThereIsNoBoxAvailable
+    cabinet = Cabinet.new(0)
+    robot = Robot.new(cabinet, @cabinetSelector)
+    
+    manager = Manager.new(cabinet, robot)
+    ticket = manager.store(Bag.new())
+    assert_nil ticket
+  end
+
 end
