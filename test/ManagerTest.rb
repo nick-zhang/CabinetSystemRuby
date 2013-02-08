@@ -8,6 +8,8 @@ require_relative '../src/SequentialSelector'
 class ManagerTest < MiniTest::Unit::TestCase
   def setup
     @cabinetSelector = SequentialSelector.new
+    @cabinet = Cabinet.new(1)
+    @robot = Robot.new(@cabinet, @cabinetSelector)
   end
   
   def testShouldHaveEmptyBoxWhenHasCapacity
@@ -27,5 +29,11 @@ class ManagerTest < MiniTest::Unit::TestCase
     assert !manager.hasEmptyBox?
   end
   
-     
+  def testShouldStoreBagWhenThereIsBoxAvailable
+    manager = Manager.new(@cabinet, @robot)
+    
+    ticket = manager.store(Bag.new())
+    refute_nil ticket
+  end
+      
 end

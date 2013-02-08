@@ -13,4 +13,11 @@ class Manager
     false
   end
   
+  def store bag
+    @storables.each do |storable|
+      return storable.store(bag) if storable.hasEmptyBox?
+    end 
+    nil
+  end
+  
 end
