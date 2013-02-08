@@ -60,8 +60,15 @@ class ManagerTest < MiniTest::Unit::TestCase
     bag = Bag.new()
     ticket = manager.store(bag)
     pickedBag = manager.pick(ticket)
-    bag = manager.pick(Ticket.new())  
+    bag = manager.pick(ticket)  
     assert_nil bag
   end
-       
+    
+  def testShouldThrowExceptionGivenNotExistedTicket
+    cabinet = Cabinet.new(1)
+    robot = Robot.new(cabinet, @cabinetSelector)
+    bag = robot.pick(Ticket.new())
+    assert_nil bag     
+  end
+
 end
