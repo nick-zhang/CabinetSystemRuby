@@ -82,6 +82,5 @@ class SuperRobotTest < MiniTest::Unit::TestCase
                   "  Cabinet#{cabinet1.object_id}:1\n" +
                   "  Cabinet#{cabinet2.object_id}:2\n", emptyBoxReport
    end
-   
-    
+  
 end
