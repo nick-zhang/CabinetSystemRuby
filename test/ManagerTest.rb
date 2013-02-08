@@ -18,5 +18,14 @@ class ManagerTest < MiniTest::Unit::TestCase
     manager = Manager.new(cabinet1, robot)
     assert manager.hasEmptyBox?
   end
+  
+  def testShouldNotHaveEmptyBoxWhenNoCapacity
+    cabinet = Cabinet.new(0)
+    robot = Robot.new(cabinet, @cabinetSelector)
+
+    manager = Manager.new(cabinet, robot)
+    assert !manager.hasEmptyBox?
+  end
+  
      
 end
