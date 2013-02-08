@@ -20,4 +20,13 @@ class Manager
     nil
   end
   
+  def pick ticket
+    @storables.each do |storable|
+      bag = storable.pick(ticket)
+      return bag if !bag.nil?
+    end
+    
+    nil
+  end
+  
 end

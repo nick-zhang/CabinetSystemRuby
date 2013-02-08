@@ -44,5 +44,14 @@ class ManagerTest < MiniTest::Unit::TestCase
     ticket = manager.store(Bag.new())
     assert_nil ticket
   end
+    
+  def testShouldPickBagCorrectlyWhenStoredSuccessfully
+    manager = Manager.new(@cabinet, @robot)
 
+    bag = Bag.new()
+    ticket = manager.store(bag)
+    pickedBag = manager.pick(ticket)
+    assert_equal bag, pickedBag 
+  end
+   
 end
