@@ -56,7 +56,7 @@ class SuperRobotTest < MiniTest::Unit::TestCase
      assert_equal bag, pickedBag 
    end
        
-   def testShouldReturnNilGivenUsedTicket
+   def testShouldReturnNilGivenUsedTicketToPickBag
      cabinet = Cabinet.new(1)
      robot = Robot.new(cabinet, @cabinetSelector)
      bag = Bag.new()
@@ -66,7 +66,7 @@ class SuperRobotTest < MiniTest::Unit::TestCase
      assert_nil bag
    end
      
-   def testShouldThrowExceptionGivenNotExistedTicket
+   def testShouldReturnNilGivenNotExistedTicketToPickBag
      cabinet = Cabinet.new(1)
      robot = Robot.new(cabinet, @cabinetSelector)
      bag = robot.pick(Ticket.new())

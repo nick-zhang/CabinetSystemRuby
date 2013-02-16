@@ -49,7 +49,7 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_equal bag, pickedBag 
   end
   
-  def testShouldReturnNilGivenUsedTicket
+  def testShouldReturnNilGivenUsedTicketToPickBag
     bag = Bag.new()
     ticket = @cabinet.store(bag)
     pickedBag = @cabinet.pick(ticket)
@@ -57,7 +57,7 @@ class CabinetTest < MiniTest::Unit::TestCase
     assert_nil bag 
   end
   
-  def testShouldThrowExceptionGivenNotExistedTicket
+  def testShouldReturnNilGivenNotExistedTicketToPickBag
     bag = @cabinet.pick(Ticket.new())  
     assert_nil bag     
   end
