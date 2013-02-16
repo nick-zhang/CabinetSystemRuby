@@ -14,13 +14,18 @@ class Robot
     false
   end
   
-  def emptyBoxReport?
-    report = "#{@selector.name?}Robot#{self.object_id}\n"
-    
-    @cabinets.each do |cabinet|
-      report << "  #{cabinet.emptyBoxReport?}\n" unless cabinet.nil?
+  def emptyBoxReport? level
+    indent = ""
+    level.times do 
+      indent << "  "
     end
-    report
+    
+    report = "#{indent}#{@selector.name?}Robot#{self.object_id}\n" 
+    @cabinets.each do |cabinet|
+      report << "#{cabinet.emptyBoxReport? level+1}" unless cabinet.nil?
+    end
+    
+    "#{report}"
   end
   
   def store bag
@@ -37,8 +42,7 @@ class Robot
       return bag if !bag.nil?
     end
     
-    nil
-    
+    nil    
   end
   
 end

@@ -21,8 +21,13 @@ class Cabinet
     emptyBoxNum? / @capacity
   end
   
-  def emptyBoxReport?
-    "Cabinet#{self.object_id}:#{emptyBoxNum?}"
+  def emptyBoxReport? level
+    indent = ""
+    level.times do 
+      indent << "  "
+    end
+    
+    "#{indent}Cabinet#{self.object_id}:#{emptyBoxNum?}\n"
   end
   
   def store bag

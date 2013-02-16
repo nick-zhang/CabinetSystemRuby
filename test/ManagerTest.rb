@@ -4,6 +4,7 @@ require_relative '../src/Manager'
 require_relative '../src/Cabinet'
 require_relative '../src/Bag'
 require_relative '../src/SequentialSelector'
+require_relative '../src/MostAvailableBoxSelector'
 
 class ManagerTest < MiniTest::Unit::TestCase
   def setup
@@ -65,10 +66,27 @@ class ManagerTest < MiniTest::Unit::TestCase
   end
     
   def testShouldReturnNilGivenNotExistedTicketToPickBag
-    cabinet = Cabinet.new(1)
-    robot = Robot.new(cabinet, @cabinetSelector)
-    bag = robot.pick(Ticket.new())
+    manager = Manager.new(@cabinet, @robot)
+    bag = manager.pick(Ticket.new())
     assert_nil bag     
   end
 
+  def testShouldReturnFormattedEmptyBoxReportStringGivenMultipleCaibnetAndRobots
+    cabinet = Cabinet.new(3)
+    
+    cabinet1 = Cabinet.new(1)
+    cabinet2 = Cabinet.new(2)
+    cabinetSelector = MostAvailableBoxSelector.new
+    robot = Robot.new(cabinet1, cabinet2, cabinetSelector)
+     
+    manager = Manager.new(cabinet, robot)
+
+    emptyBoxReport = manager.emptyBoxReport? 0
+    
+    assert_equal "Manager#{manager.object_id}\n"+
+                 "  Cabinet#{cabinet.object_id}:3\n"+  
+                 "  SmartRobot#{robot.object_id}\n"+
+                 "    Cabinet#{cabinet1.object_id}:1\n"+
+                 "    Cabinet#{cabinet2.object_id}:2\n", emptyBoxReport
+   end
 end

@@ -63,8 +63,12 @@ class CabinetTest < MiniTest::Unit::TestCase
   end
   
   def testShouldReturnFormattedEmptyBoxReportString
-    emptyBoxReport = @cabinet.emptyBoxReport?
-    assert_equal "Cabinet#{@cabinet.object_id}:1", emptyBoxReport
+    emptyBoxReport = @cabinet.emptyBoxReport? 0
+    assert_equal "Cabinet#{@cabinet.object_id}:1\n", emptyBoxReport
   end
   
+  def testShouldReturnFormattedEmptyBoxReportString
+    emptyBoxReport = @cabinet.emptyBoxReport? 1
+    assert_equal "  Cabinet#{@cabinet.object_id}:1\n", emptyBoxReport
+  end
 end

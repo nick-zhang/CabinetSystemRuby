@@ -77,7 +77,7 @@ class SuperRobotTest < MiniTest::Unit::TestCase
      cabinet1 = Cabinet.new(1)
      cabinet2 = Cabinet.new(2)
      robot = Robot.new(cabinet1, cabinet2, @cabinetSelector)
-     emptyBoxReport = robot.emptyBoxReport?
+     emptyBoxReport = robot.emptyBoxReport? 0
      assert_equal "SuperRobot#{robot.object_id}\n"+
                   "  Cabinet#{cabinet1.object_id}:1\n" +
                   "  Cabinet#{cabinet2.object_id}:2\n", emptyBoxReport
