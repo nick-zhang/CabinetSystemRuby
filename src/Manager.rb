@@ -1,4 +1,7 @@
+require_relative "Reporter"
+
 class Manager
+  include Reporter
   
   def initialize(*storables)
     @storables = storables
@@ -14,7 +17,7 @@ class Manager
   end
   
   def emptyBoxReport? level
-    report = "Manager#{self.object_id}\n"
+    report = "#{indent? level}Manager#{self.object_id}\n"
     
     @storables.each do |storable|
       report << "#{storable.emptyBoxReport? level+1}" unless storable.nil?

@@ -1,7 +1,9 @@
 require_relative 'Ticket'
 require_relative 'CabinetException'
+require_relative "Reporter"
 
 class Cabinet 
+  include Reporter 
   
   def initialize(capacity)
     @capacity = capacity
@@ -22,12 +24,7 @@ class Cabinet
   end
   
   def emptyBoxReport? level
-    indent = ""
-    level.times do 
-      indent << "  "
-    end
-    
-    "#{indent}Cabinet#{self.object_id}:#{emptyBoxNum?}\n"
+    "#{indent? level}Cabinet#{self.object_id}:#{emptyBoxNum?}\n"
   end
   
   def store bag

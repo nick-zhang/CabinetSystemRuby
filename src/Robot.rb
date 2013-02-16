@@ -1,4 +1,7 @@
+require_relative "Reporter"
+
 class Robot
+  include Reporter
   
   def initialize(*cabinets, cabinetSelector)
     @cabinets = cabinets
@@ -15,17 +18,12 @@ class Robot
   end
   
   def emptyBoxReport? level
-    indent = ""
-    level.times do 
-      indent << "  "
-    end
-    
-    report = "#{indent}#{@selector.name?}Robot#{self.object_id}\n" 
+    report = "#{indent? level}#{@selector.name?}Robot#{self.object_id}\n" 
     @cabinets.each do |cabinet|
       report << "#{cabinet.emptyBoxReport? level+1}" unless cabinet.nil?
     end
     
-    "#{report}"
+    report
   end
   
   def store bag
