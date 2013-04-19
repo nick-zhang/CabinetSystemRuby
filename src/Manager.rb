@@ -24,8 +24,7 @@ class Manager
     end
     report
   end
-  
-  
+    
   def store bag
     @storables.each do |storable|
       return storable.store(bag) if storable.hasEmptyBox?

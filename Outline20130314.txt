@@ -1,0 +1,36 @@
+Review: 
+1. Naming convention
+2. Methods
+3. Class
+4. Test how to assert exception raises
+5. 
+
+1. Class definition, access right, class fields
+	initialize()  
+	dynamically add more to existing class
+	inheritance, super
+	access object attribute, read and write
+	class attribute & class method
+	access right control: only for methods. Two ways to define access right. The default access right ? 
+	
+2. Unit test framework -> MiniTest.  (UPPER CASE variable is constant)
+	http://ruby-doc.org/stdlib-1.9.3/libdoc/minitest/unit/rdoc/MiniTest.html
+	run given test: ruby SongTest.rb --name testSongListClassMethod
+	setup, teardown
+	
+3. Naming:
+http://rubylearning.com/satishtalim/ruby_names.html
+
+A local variable (declared within an object) name consists of a lowercase letter (or an underscore) followed by name characters (sunil, _z, hit_and_run).
+An instance variable (declared within an object always "belongs to" whatever object self refers to) name starts with an ''at'' sign (''@'') followed by a name (@sign, @_, @Counter).
+
+A class variable (declared within a class) name starts with two ''at'' signs (''@@'') followed by a name (@@sign, @@_, @@Counter). A class variable is shared among all objects of a class. Only one copy of a particular class variable exists for a given class. Class variables used at the top level are defined in Object and behave like global variables. Class variables are rarely used in Ruby programs.
+Global variables start with a dollar sign (''$'') followed by name characters. A global variable name can be formed using ''$-'' followed by any single character ($counter, $COUNTER, $-x). Ruby defines a number of global variables that include other punctuation characters, such as $_ and $-K.
+
+method name
+
+4. require vs. load
+
+require './CaesarEncrypter'
+require_relative 'CaesarEncrypter'
+load 'CaesarEncrypter.rb'

@@ -41,8 +41,9 @@ class SmartRobotTest < MiniTest::Unit::TestCase
   def testShouldNotStoreBagWhenThereIsNoBoxAvailable
      cabinet = Cabinet.new(0)
      robot = Robot.new(cabinet, @cabinetSelector)
-     ticket = robot.store(Bag.new())
-     assert_nil ticket
+     assert_raises(CabinetException){
+       ticket = robot.store(Bag.new())
+     }
   end
    
    def testShouldPickBagCorrectlyWhenStoredSuccessfully

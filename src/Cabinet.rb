@@ -28,7 +28,7 @@ class Cabinet
   end
   
   def store bag
-    raise CabinetException.new("The ticket is invalid." ) unless hasEmptyBox?
+    raise CabinetException.new("There is no available box!" ) unless hasEmptyBox?
     
     ticket =  Ticket.new()
     @storedBags[ticket] = bag
